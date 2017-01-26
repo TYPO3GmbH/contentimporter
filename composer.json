@@ -1,0 +1,36 @@
+{
+  "name": "t3g/contentimporter",
+  "description": "Create content from Microsoft Office Docs",
+  "minimum-stability": "dev",
+  "type": "typo3-cms-extension",
+  "license": "GPL-2.0+",
+  "repositories": {
+    "0": {
+      "type": "composer",
+      "url": "https://composer.typo3.org/"
+    }
+  },
+  "authors": [
+    {
+      "name": "TYPO3 GmbH",
+      "role": "Developer",
+      "homepage": "https://typo3.com/"
+    }
+  ],
+  "require": {
+    "phpoffice/phpword": "^0.13.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "T3G\\Contentimporter\\": "Classes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "T3G\\Contentimporter\\Tests\\": "Tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  }
+}
