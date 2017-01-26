@@ -1,29 +1,25 @@
 <?php
-/**
- * This file is part of PHPWord - A pure PHP library for reading and writing
- * word processing documents.
- *
- * PHPWord is free software distributed under the terms of the GNU Lesser
- * General Public License version 3 as published by the Free Software Foundation.
- *
- * For the full copyright and license information, please read the LICENSE
- * file that was distributed with this source code. For the full list of
- * contributors, visit https://github.com/PHPOffice/PHPWord/contributors.
- *
- * @link        https://github.com/PHPOffice/PHPWord
- * @copyright   2010-2016 PHPWord contributors
- * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- */
+declare(strict_types=1);
 
 namespace T3G\ContentImporter\Writer\Element;
 
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\Writer\HTML\Element\AbstractElement;
 
 /**
- * ListItem element HTML writer
- *
- * @since 0.10.0
+ * ListItem element HTML writer - taken from phpword and changed to generate <li> tags
  */
 class ListItem extends AbstractElement
 {

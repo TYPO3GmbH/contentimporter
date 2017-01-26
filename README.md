@@ -1,5 +1,5 @@
-MY SUPER PROJECT
+Content Importer
 ================
 
-Add some description about your projects purpose here and if necessary add a how to install.
-
+- Upload and convert .docx files to content elements
+- text only, no support for images
