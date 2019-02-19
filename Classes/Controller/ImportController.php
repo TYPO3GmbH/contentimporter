@@ -18,6 +18,7 @@ namespace T3G\Contentimporter\Controller;
 
 use T3G\Contentimporter\Service\ContentConverterService;
 use T3G\Contentimporter\Service\DataHandlerService;
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -41,8 +42,8 @@ class ImportController extends ActionController
         $dataHandlerService = GeneralUtility::makeInstance(DataHandlerService::class);
         $dataHandlerService->createContentElements($contentElements);
 
-        $this->redirectToUri(BackendUtility::getModuleUrl('web_layout', ['id' => $pid]));
-
+        $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
+        $this->redirectToUri($uriBuilder->buildUriFromRoute('web_layout', ['id' => $pid]));
     }
 
 }

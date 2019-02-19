@@ -10,7 +10,7 @@
  * "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = [
+$EM_CONF['contentimporter'] = [
     'title' => 'Content Importer',
     'description' => '',
     'category' => 'plugin',
@@ -21,10 +21,10 @@ $EM_CONF[$_EXTKEY] = [
     'uploadfolder' => '0',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '1.0.0',
+    'version' => '1.1.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '8.0.0',
+            'typo3' => '8.0.0-9.5.99',
         ],
         'conflicts' => [],
         'suggests' => [],

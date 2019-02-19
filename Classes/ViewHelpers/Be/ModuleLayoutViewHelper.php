@@ -17,28 +17,36 @@ namespace T3G\Contentimporter\ViewHelpers\Be;
 
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 class ModuleLayoutViewHelper extends AbstractViewHelper
 {
+    use CompileWithRenderStatic;
+
     /**
      * @var bool
      */
     protected $escapeOutput = false;
 
     /**
-     *
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
+     * @return string
+     * @throws \Exception
      */
-    public function render()
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string
     {
-        if ($this->viewHelperVariableContainer->exists(self::class, ModuleTemplate::class)) {
+        if ($renderingContext->getViewHelperVariableContainer()->exists(self::class, ModuleTemplate::class)) {
             throw new \Exception('this vh cannot be used more than once per template', 1483292643);
         }
         $moduleTemplate = GeneralUtility::makeInstance(ModuleTemplate::class);
-        $moduleTemplate->setFlashMessageQueue($this->controllerContext->getFlashMessageQueue());
+        $moduleTemplate->setFlashMessageQueue($renderingContext->getControllerContext()->getFlashMessageQueue());
 
-        $this->viewHelperVariableContainer->add(self::class, ModuleTemplate::class, $moduleTemplate);
-        $moduleTemplate->setContent($this->renderChildren());
+        $renderingContext->getViewHelperVariableContainer()->add(self::class, ModuleTemplate::class, $moduleTemplate);
+        $moduleTemplate->setContent($renderChildrenClosure());
 
         return $moduleTemplate->renderContent();
     }
