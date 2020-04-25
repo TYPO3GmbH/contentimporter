@@ -1,0 +1,61 @@
+{
+    "name": "t3g/contentimporter",
+    "description": "Create content from Microsoft Office Docs",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "type": "typo3-cms-extension",
+    "license": "GPL-2.0+",
+    "support": {
+        "issues": "https://github.com/TYPO3GmbH/contentimporter/issues",
+        "source": "https://github.com/TYPO3GmbH/contentimporter.git"
+    },
+    "authors": [
+        {
+            "name": "TYPO3 GmbH",
+            "role": "Developer",
+            "homepage": "https://typo3.com/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "T3G\\Contentimporter\\": "Classes/"
+        }
+    },
+    "require": {
+        "typo3/cms-core": "^9.5 || ^10.4",
+        "phpoffice/phpword": "^0.17"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "roave/security-advisories": "dev-master",
+        "overtrue/phplint": "^1.1"
+    },
+
+    "scripts": {
+        "t3g:test:php:lint": [
+            "phplint"
+        ],
+        "t3g:test": [
+            "@t3g:test:php:lint"
+        ],
+        "t3g:cgl": [
+            "php-cs-fixer --diff -v fix"
+        ],
+        "post-autoload-dump": [
+            "mkdir -p .build/web/typo3conf/ext/", "[ -L .build/web/typo3conf/ext/contentimporter ] || ln -snvf ../../../../. .build/web/typo3conf/ext/contentimporter"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "discard-changes": true,
+        "vendor-dir": ".build/vendor",
+        "bin-dir": ".build/bin"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "contentimporter",
+            "app-dir": ".build",
+            "web-dir": ".build/public"
+        }
+    }
+}
