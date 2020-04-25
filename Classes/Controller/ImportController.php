@@ -27,8 +27,7 @@ class ImportController extends ActionController
         $pid = (int)$_GET['id'];
         $uploadedFile = $_FILES['tx_contentimporter_web_contentimportercontentimport']['tmp_name']['fileName'];
 
-        $contentConverter = GeneralUtility::makeInstance(ContentConverterService::class);
-        $contentElements = $contentConverter->convert($uploadedFile, $pid);
+        $contentElements = GeneralUtility::makeInstance(ContentConverterService::class)->convert($uploadedFile, $pid);
 
         $dataHandlerService = GeneralUtility::makeInstance(DataHandlerService::class);
         $dataHandlerService->createContentElements($contentElements);
