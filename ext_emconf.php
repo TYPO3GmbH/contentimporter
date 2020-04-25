@@ -16,7 +16,7 @@ $EM_CONF['contentimporter'] = [
     'category' => 'plugin',
     'author' => 'Susanne Moog',
     'author_email' => 'susanne.moog@typo3.com',
-    'state' => 'alpha',
+    'state' => 'experimental',
     'internal' => '',
     'uploadfolder' => '0',
     'createDirs' => '',
@@ -24,7 +24,7 @@ $EM_CONF['contentimporter'] = [
     'version' => '1.1.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '8.0.0-9.5.99',
+            'typo3' => '9.5.0-10.4.99',
         ],
         'conflicts' => [],
         'suggests' => [],
